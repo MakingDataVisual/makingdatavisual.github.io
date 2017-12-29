@@ -1,0 +1,110 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.0.json", 
+  "config":{"background":"#ffffff"},
+  "autosize": "pad",
+  "data": [
+    {
+      "name": "income",
+      "url": "data/income_cleaned.csv",
+      "format": {
+        "type": "csv",
+        "parse": {"id": "number","value": "number"}
+      }
+    },
+    {
+      "name": "states",
+      "url": "data/us-10m.json",
+      "format": {"type": "topojson","feature": "states"}
+    }
+  ],
+  "projections": [
+    {
+      "name": "projection",
+      "type": "albersUsa",
+      "scale": 400,
+      "translate": [150,90]
+    }
+  ],
+  "scales": [
+    {
+      "name": "color",
+      "type": "quantize",
+      "domain": {"data": "income","field": "value"},
+      "range": {"scheme": "viridis"}
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "orient": "right",
+      "title": "Percent income per state",
+      "encode": {
+        "symbols": {
+          "update": {
+            "shape": {"value": "square"},
+            "stroke": {"value": "#ccc"},
+            "strokeWidth": {"value": 0.2}
+          }
+        }
+      }
+    }
+  ],
+  "layout": {
+    "padding": {"row": 20,"column": 20},
+    "columns": 3
+  },
+  "marks": [
+    {
+      "name": "cell",
+      "type": "group",
+      "from": {
+        "facet": {
+          "name": "facet",
+          "data": "income",
+          "groupby": ["key"]
+        }
+      },
+      "data": [
+        {
+          "name": "joined",
+          "source": "states",
+          "transform": [
+            {
+              "type": "lookup",
+              "from": "facet",
+              "key": "id",
+              "fields": ["id"],
+              "as": ["income"]
+            },
+            {
+              "type": "filter",
+              "expr": "datum.income != null"
+            }
+          ]
+        }
+      ],
+      "marks": [
+        {
+          "type": "text",
+          "encode": {
+            "enter": {
+              "text": {"field": {"parent": "key"}},
+              "x": {"signal": "width/2"},
+              "align": {"value": "center"}
+            }
+          }
+        },
+        {
+          "type": "shape",
+          "from": {"data": "joined"},
+          "encode": {
+            "update": {
+              "fill": {"scale": "color","field": "income.value"}
+            }
+          },
+          "transform": [{"type": "geoshape","projection": "projection"}]
+        }
+      ]
+    }
+  ]
+}

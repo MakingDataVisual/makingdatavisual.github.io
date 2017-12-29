@@ -1,0 +1,64 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json", 
+  "config":{"background":"#ffffff"},
+  "width": 460,
+  "height": 240,
+  "layer": [
+    {
+      "data": {"url": "data/co2.csv"},
+      "mark": "line",
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "temporal",
+          "timeUnit": "year"
+        },
+        "y": {
+          "field": "Mean",
+          "type": "quantitative",
+          "scale": {"zero": false},
+          "axis": {
+            "title": "CO2 in PPM",
+            "encode": {"title": {"fill": {"value": "steelblue"}}},
+            "grid": false
+          }
+        }
+      }
+    },
+    {
+      "layer": [
+        {
+          "data": {"values": [{"rule": 0}]},
+          "mark": "rule",
+          "encoding": {
+            "y": {
+              "field": "rule",
+              "type": "quantitative",
+              "axis": {
+                "title": "Mean Global Temperature",
+                "encode": {"title": {"fill": {"value": "firebrick"}}},
+                "grid": false
+              }
+            },
+            "opacity": {"value": 0.4},
+            "color": {"value": "black"}
+          }
+        },
+        {
+          "data": {"url": "data/temp.csv"},
+          "mark": "line",
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "temporal",
+              "timeUnit": "year"
+            },
+            "y": {"field": "Value","type": "quantitative", "axis": false},
+            "color": {"value": "firebrick"}
+          }
+        }
+      ]
+    }
+  ],
+  "resolve": {"y": {"scale": "independent"}}
+}

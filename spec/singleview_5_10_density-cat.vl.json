@@ -1,0 +1,18 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "data": { "url": "data/cars.csv" },
+  "mark": "rect",
+  "encoding": {
+    "x": {"field": "make", "type": "nominal", "axis": {"title": "Make"}},
+    "y": {"field": "body-style", "type": "nominal", "axis": {"title": "Body Style"}},
+    "color": {"aggregate": "count", "type": "quantitative"}
+  },
+  "config": {
+    "background":"#ffffff",    
+    "range": {
+      "heatmap": {
+        "scheme": "greenblue"
+      }
+    }
+  }
+}

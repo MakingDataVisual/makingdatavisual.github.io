@@ -1,0 +1,94 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.0.json", 
+  "config":{"background":"#ffffff"},
+  "width": 600,
+  "height": 600,
+  "padding": 2.5,
+
+  "data": [
+    {
+      "name": "tree",
+      "url": "data/complaints_tree.json",
+      "transform": [
+        {
+          "type": "stratify",
+          "key": "id",
+          "parentKey": "parent"
+        },
+        {
+          "type": "partition",
+          "field": "size",
+          "sort": {"field": "value"},
+          "size": [{"signal": "2 * PI"}, {"signal": "width / 2"}],
+          "as": ["a0", "r0", "a1", "r1"]
+        }
+      ]
+    }
+  ],
+
+  "scales": [
+    {
+      "name": "color",
+      "domain": [0, 1],
+      "type": "sequential",
+      "range": "ramp"
+    }
+  ],
+  
+  "legends": [{
+    "fill": "color",
+    "orient": "right",
+    "type": "gradient",
+    "title": "Relief received",
+    "encode": {
+      "labels": {
+        "enter": {
+          "text": {"signal": "datum.value * 100 + '%'"}
+        }
+      }
+    }
+  }],
+
+  "marks": [
+    {
+      "type": "arc",
+      "from": {"data": "tree"},
+      "encode": {
+        "enter": {
+          "x": {"signal": "width / 2"},
+          "y": {"signal": "height / 2"},
+          "fill": {"scale": "color", "field": "relief"},
+          "tooltip": {"field": "name"}
+        },
+        "update": {
+          "startAngle": {"field": "a0"},
+          "endAngle": {"field": "a1"},
+          "innerRadius": {"field": "r0"},
+          "outerRadius": {"field": "r1"},
+          "stroke": {"value": "white"},
+          "strokeWidth": {"value": 0.5},
+          "zindex": {"value": 0}
+        },
+        "hover": {
+          "stroke": {"value": "red"},
+          "strokeWidth": {"value": 2},
+          "zindex": {"value": 1}
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": {"data": "tree"},
+      "encode": {
+        "enter": {
+          "x": {"signal": "width/2 + (datum.r0 + datum.r1) / 2 * cos(-PI/2 + (datum.a0 + datum.a1) / 2)"},
+          "y": {"signal": "height/2 + (datum.r0 + datum.r1) / 2 * sin(-PI/2 + (datum.a0 + datum.a1) / 2)"},
+          "text": {"field": "name"},
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"},
+          "fontSize": {"value": 9}
+        }
+      }
+    }
+  ]
+}

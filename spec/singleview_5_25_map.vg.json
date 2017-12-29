@@ -1,0 +1,72 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.0.json", 
+  "config":{"background":"#ffffff"},
+  "width": 900,
+  "data": [
+    {
+      "name": "income",
+      "url": "data/income.csv",
+      "format": {
+        "type": "csv",
+        "parse": {"id": "number","value": "number"}
+      },
+      "transform": [
+        {"type": "filter","expr": "datum.key=='200000+'"},
+        {
+          "type": "aggregate",
+          "groupby": ["id","value"]
+        }
+      ]
+    },
+    {
+      "name": "states",
+      "url": "data/us-10m.json",
+      "format": {"type": "topojson","feature": "states"},
+      "transform": [
+        {
+          "type": "lookup",
+          "from": "income",
+          "key": "id",
+          "fields": ["id"],
+          "as": ["income"]
+        },
+        {"type": "filter","expr": "datum.income != null"}
+      ]
+    }
+  ],
+  "projections": [{"name": "projection","type": "albersUsa"}],
+  "scales": [
+    {
+      "name": "color",
+      "type": "quantize",
+      "domain": {"data": "income","field": "value"},
+      "range": {"scheme": "viridis"}
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "orient": "right",
+      "title": "% with income $200000+",
+      "encode": {
+        "symbols": {
+          "update": {
+            "shape": {"value": "square"},
+            "stroke": {"value": "#ccc"},
+            "strokeWidth": {"value": 5}
+          }
+        }
+      }
+    }
+  ],
+  "marks": [
+    {
+      "type": "shape",
+      "from": {"data": "states"},
+      "encode": {
+        "update": {"fill": {"scale": "color","field": "income.value"}}
+      },
+      "transform": [{"type": "geoshape","projection": "projection"}]
+    }
+  ]
+}

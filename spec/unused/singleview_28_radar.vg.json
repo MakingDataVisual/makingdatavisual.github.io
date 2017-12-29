@@ -1,0 +1,226 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.0.json", 
+  "config":{"background":"#ffffff"},
+  "padding": 5,
+  "signals": [
+    {"name": "radius","value": 180},
+    {"name": "radiusRange","value": [0,180]}
+  ],
+  "data": [
+    {
+      "name": "cars",
+      "url": "data/cars.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "city-mpg": "number",
+          "highway-mpg": "number",
+          "price": "number",
+          "horsepower": "number",
+          "num-of-cylinders": "number"
+        }
+      },
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": ["body-style"],
+          "fields": [
+            "city-mpg",
+            "highway-mpg",
+            "price",
+            "horsepower",
+            "num-of-cylinders"
+          ],
+          "ops": [
+            "average",
+            "average",
+            "average",
+            "average",
+            "average"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "folded",
+      "source": "cars",
+      "transform": [
+        {
+          "type": "fold",
+          "fields": [
+            "average_city-mpg",
+            "average_highway-mpg",
+            "average_price",
+            "average_horsepower",
+            "average_num-of-cylinders"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "fields",
+      "source": "folded",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": ["key"],
+          "fields": ["value","value"],
+          "ops": ["min","max"]
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "angle",
+      "type": "point",
+      "range": [6.28,0],
+      "padding": 0.5,
+      "domain": {"data": "fields","field": "key"}
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {"data": "cars","field": "body-style","sort": true},
+      "range": "category"
+    },
+    {
+      "name": "average_city-mpg",
+      "type": "linear",
+      "range": {"signal": "radiusRange"},
+      "zero": true,
+      "nice": true,
+      "domain": {"data": "cars","field": "average_city-mpg"}
+    },
+    {
+      "name": "average_highway-mpg",
+      "type": "linear",
+      "range": {"signal": "radiusRange"},
+      "zero": true,
+      "nice": true,
+      "domain": {"data": "cars","field": "average_highway-mpg"}
+    },
+    {
+      "name": "average_price",
+      "type": "linear",
+      "range": {"signal": "radiusRange"},
+      "zero": true,
+      "nice": true,
+      "domain": {"data": "cars","field": "average_price"}
+    },
+    {
+      "name": "average_horsepower",
+      "type": "linear",
+      "range": {"signal": "radiusRange"},
+      "zero": true,
+      "nice": true,
+      "domain": {"data": "cars","field": "average_horsepower"}
+    },
+    {
+      "name": "average_num-of-cylinders",
+      "type": "linear",
+      "range": {"signal": "radiusRange"},
+      "zero": true,
+      "nice": true,
+      "domain": {"data": "cars","field": "average_num-of-cylinders"}
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "orient": "none",
+      "title": "Body style",
+      "encode": {
+        "legend": {
+          "update": {"x": {"value": 250},"y": {"value": -200}}
+        }
+      }
+    }
+  ],
+  "marks": [
+    {
+      "type": "group",
+      "from": {
+        "facet": {
+          "data": "folded",
+          "name": "facet",
+          "groupby": "body-style"
+        }
+      },
+      "marks": [
+        {
+          "name": "grid",
+          "from": {"data": "fields"},
+          "type": "rule",
+          "encode": {
+            "update": {
+              "x": {
+                "signal": "1 * radius * cos(scale('angle', datum.key))"
+              },
+              "y": {
+                "signal": "1 * radius * sin(scale('angle', datum.key))"
+              },
+              "x2": {"value": 0},
+              "y2": {"value": 0},
+              "stroke": {"value": "#ccc"}
+            }
+          }
+        },
+        {
+          "name": "label",
+          "from": {"data": "fields"},
+          "type": "text",
+          "encode": {
+            "update": {
+              "x": {
+                "signal": "1.2 * radius * cos(scale('angle', datum.key))"
+              },
+              "y": {
+                "signal": "1.2 * radius * sin(scale('angle', datum.key))"
+              },
+              "baseline": {"value": "bottom"},
+              "text": {"field": "key"},
+              "align": {"value": "center"}
+            }
+          }
+        },
+        {
+          "name": "scale",
+          "from": {"data": "fields"},
+          "type": "text",
+          "encode": {
+            "update": {
+              "x": {
+                "signal": "1.2 * radius * cos(scale('angle', datum.key))"
+              },
+              "y": {
+                "signal": "1.2 * radius * sin(scale('angle', datum.key))"
+              },
+              "baseline": {"value": "top"},
+              "text": {"signal": "'max of ' + format(datum.max_value, '.2f')"},
+              "align": {"value": "center"},
+              "fill": {"value": "#888"}
+            }
+          }
+        },
+        {
+          "type": "line",
+          "from": {"data": "facet"},
+          "encode": {
+            "enter": {
+              "x": {
+                "signal": "scale(datum.key, datum.value) * cos(scale('angle', datum.key))"
+              },
+              "y": {
+                "signal": "scale(datum.key, datum.value) * sin(scale('angle', datum.key))"
+              },
+              "stroke": {"scale": "color","field": "body-style"},
+              "strokeWidth": {"value": 2},
+              "interpolate": {"value": "linear-closed"}
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

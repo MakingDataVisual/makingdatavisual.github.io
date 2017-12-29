@@ -1,0 +1,31 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "config":{"background":"#ffffff"},
+  "data": {
+    "url": "data/census-income-pivoted.csv",
+    "format": {"type": "csv", "parse": {"order": "number", "total": "number"}}
+  },
+  "mark": "bar",
+  "encoding": {
+    "row": {
+      "field": "key",
+      "type": "ordinal",
+      "sort": {
+        "op": "min",
+        "field": "order"
+      }
+    },
+    "y": {
+      "field": "value",
+      "type": "quantitative"
+    },
+    "x": {
+      "field": "Geography",
+      "type": "nominal",
+      "sort": {
+        "op": "min",
+        "field": "total"
+      }
+    }
+  }
+}

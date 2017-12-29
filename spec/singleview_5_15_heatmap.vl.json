@@ -1,0 +1,21 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "config": {"background":"#ffffff",
+    "range": {
+      "heatmap": {
+        "scheme": "yellowgreenblue"
+      }
+    }
+  },     
+  "width": 600,
+  "data": {"url": "data/complaints.csv", "format": {"type": "csv"}},
+  "mark": "rect",
+  "encoding": {
+    "y": {"field": "Product", "type": "nominal"},
+    "x": {
+      "field": "Date received", 
+      "type": "temporal", 
+      "timeUnit":"yearmonth"},
+    "color": {"aggregate": "count", "type": "quantitative"}
+  }
+}

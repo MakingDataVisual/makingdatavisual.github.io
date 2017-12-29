@@ -1,0 +1,187 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.0.json", 
+  "config":{"background":"#ffffff"},
+  "width": 700,
+  "height": 400,
+  "padding": 5,
+  "config": {
+    "axisY": {
+      "titleX": -2,
+      "titleY": 410,
+      "titleAngle": 0,
+      "titleAlign": "center",
+      "titleBaseline": "top"
+    }
+  },
+  "data": [
+    {
+      "name": "cars",
+      "url": "data/cars.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "city-mpg": "number",
+          "highway-mpg": "number",
+          "price": "number",
+          "horsepower": "number",
+          "num-of-cylinders": "number"
+        }
+      },
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": ["body-style"],
+          "fields": [
+            "city-mpg",
+            "highway-mpg",
+            "price",
+            "horsepower",
+            "num-of-cylinders"
+          ],
+          "ops": [
+            "average",
+            "average",
+            "average",
+            "average",
+            "average"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "fields",
+      "values": [
+        "average_city-mpg",
+        "average_highway-mpg",
+        "average_price",
+        "average_horsepower",
+        "average_num-of-cylinders"
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "ord",
+      "type": "point",
+      "range": "width",
+      "round": true,
+      "domain": {"data": "fields","field": "data"}
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": {"data": "cars","field": "body-style","sort": true},
+      "range": "category"
+    },
+    {
+      "name": "average_city-mpg",
+      "type": "linear",
+      "range": "height",
+      "zero": false,
+      "nice": true,
+      "domain": {"data": "cars","field": "average_city-mpg"}
+    },
+    {
+      "name": "average_highway-mpg",
+      "type": "linear",
+      "range": "height",
+      "zero": false,
+      "nice": true,
+      "domain": {"data": "cars","field": "average_highway-mpg"}
+    },
+    {
+      "name": "average_price",
+      "type": "linear",
+      "range": "height",
+      "zero": false,
+      "nice": true,
+      "domain": {"data": "cars","field": "average_price"}
+    },
+    {
+      "name": "average_horsepower",
+      "type": "linear",
+      "range": "height",
+      "zero": false,
+      "nice": true,
+      "domain": {"data": "cars","field": "average_horsepower"}
+    },
+    {
+      "name": "average_num-of-cylinders",
+      "type": "linear",
+      "range": "height",
+      "zero": false,
+      "nice": true,
+      "domain": {"data": "cars","field": "average_num-of-cylinders"}
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "orient": "left",
+      "title": "Body style"
+    }
+  ],
+  "axes": [
+    {
+      "orient": "left",
+      "zindex": 1,
+      "scale": "average_city-mpg",
+      "title": "Mean City MPG",
+      "offset": {"scale": "ord","value": "average_city-mpg","mult": -1}
+    },
+    {
+      "orient": "left",
+      "zindex": 1,
+      "scale": "average_highway-mpg",
+      "title": "Mean Highway MPG",
+      "offset": {"scale": "ord","value": "average_highway-mpg","mult": -1}
+    },
+    {
+      "orient": "left",
+      "zindex": 1,
+      "scale": "average_price",
+      "title": "Mean Price",
+      "offset": {"scale": "ord","value": "average_price","mult": -1}
+    },
+    {
+      "orient": "left",
+      "zindex": 1,
+      "scale": "average_horsepower",
+      "title": "Mean Horsepower",
+      "offset": {"scale": "ord","value": "average_horsepower","mult": -1}
+    },
+    {
+      "orient": "left",
+      "zindex": 1,
+      "scale": "average_num-of-cylinders",
+      "title": "Mean # cylinders",
+      "offset": {"scale": "ord","value": "average_num-of-cylinders","mult": -1}
+    }
+  ],
+  "marks": [
+    {
+      "type": "group",
+      "from": {"data": "cars"},
+      "marks": [
+        {
+          "type": "line",
+          "from": {"data": "fields"},
+          "encode": {
+            "enter": {
+              "x": {"scale": "ord","field": "data"},
+              "y": {
+                "scale": {"datum": "data"},
+                "field": {"parent": {"datum": "data"}}
+              },
+              "stroke": {
+                "scale": "color",
+                "field": {"parent": "body-style"}
+              },
+              "strokeWidth": {"value": 2}
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

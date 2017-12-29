@@ -1,0 +1,229 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.0.json", 
+  "config":{"background":"#ffffff"},
+  "width": 500,
+  "height": 100,
+  "padding": 5,
+  "signals": [
+    {
+      "name": "bandwidth",
+      "value": 3
+    },
+    {
+      "name": "steps",
+      "value": 300
+    }
+  ],
+  "data": [
+    {
+      "name": "points",
+      "url": "data/cars.csv",
+      "format": {
+        "type": "csv",
+        "parse": {
+          "city-mpg": "number"
+        }
+      }
+    },
+    {
+      "name": "summary",
+      "source": "points",
+      "transform": [
+        {
+          "type": "aggregate",
+          "fields": [
+            "city-mpg",
+            "city-mpg"
+          ],
+          "ops": [
+            "mean",
+            "stdev"
+          ],
+          "as": [
+            "mean",
+            "stdev"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "density3",
+      "source": "points",
+      "transform": [
+        {
+          "type": "density",
+          "extent": {
+            "signal": "domain('xscale')"
+          },
+          "steps": {
+            "signal": "steps"
+          },
+          "method": "pdf",
+          "distribution": {
+            "function": "kde",
+            "field": "city-mpg",
+            "bandwidth": 3
+          }
+        }
+      ]
+    },
+    {
+      "name": "density1",
+      "source": "points",
+      "transform": [
+        {
+          "type": "density",
+          "extent": {
+            "signal": "domain('xscale')"
+          },
+          "steps": {
+            "signal": "steps"
+          },
+          "method": "pdf",
+          "distribution": {
+            "function": "kde",
+            "field": "city-mpg",
+            "bandwidth": 1
+          }
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "xscale",
+      "type": "linear",
+      "range": "width",
+      "domain": {
+        "data": "points",
+        "field": "city-mpg"
+      },
+      "nice": true
+    },
+    {
+      "name": "yscale",
+      "type": "linear",
+      "range": "height",
+      "round": true,
+      "domain": {
+        "fields": [
+          {
+            "data": "density3",
+            "field": "density"
+          }
+        ]
+      }
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": [
+        "bandwidth = 1",
+        "bandwidth = 3"
+      ],
+      "range": [
+        "steelblue",
+        "#b44682"
+      ]
+    }
+  ],
+  "axes": [
+    {
+      "orient": "bottom",
+      "scale": "xscale",
+      "zindex": 1
+    }
+  ],
+  "legends": [
+    {
+      "orient": "top-left",
+      "fill": "color",
+      "offset": 0,
+      "zindex": 1
+    }
+  ],
+  "marks": [
+    {
+      "type": "line",
+      "from": {
+        "data": "density1"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "xscale",
+            "field": "value"
+          },
+          "y": {
+            "scale": "yscale",
+            "field": "density"
+          },
+          "y2": {
+            "scale": "yscale",
+            "value": 0
+          },
+          "stroke": {
+            "signal": "scale('color', 'Density 1')"
+          }
+        }
+      }
+    },
+    {
+      "type": "line",
+      "from": {
+        "data": "density3"
+      },
+      "encode": {
+        "update": {
+          "x": {
+            "scale": "xscale",
+            "field": "value"
+          },
+          "y": {
+            "scale": "yscale",
+            "field": "density"
+          },
+          "y2": {
+            "scale": "yscale",
+            "value": 0
+          },
+          "stroke": {
+            "signal": "scale('color', 'Density 3')"
+          }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "from": {
+        "data": "points"
+      },
+      "encode": {
+        "enter": {
+          "x": {
+            "scale": "xscale",
+            "field": "city-mpg"
+          },
+          "width": {
+            "value": 1
+          },
+          "y": {
+            "value": 25,
+            "offset": {
+              "signal": "height"
+            }
+          },
+          "height": {
+            "value": 5
+          },
+          "fill": {
+            "value": "steelblue"
+          },
+          "fillOpacity": {
+            "value": 0.7
+          }
+        }
+      }
+    }
+  ]
+}

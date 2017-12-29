@@ -1,0 +1,26 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "config": {"background":"#ffffff"},
+  "data": {"url": "data/cars.csv"},
+  "vconcat": [{
+    "repeat": {"column": ["horsepower","city-mpg","highway-mpg"]},
+    "spec": {
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "bin": true,
+          "field": {"repeat": "column"},
+          "type": "quantitative"
+        },
+        "y": {"aggregate": "count","type": "quantitative"}
+      }
+    }
+  }, {
+    "mark": "point",
+    "encoding": {
+        "x": {"field": "horsepower","type": "quantitative"},
+        "y": {"field": "city-mpg","type": "quantitative"},
+        "color": {"field": "drive-wheels","type": "nominal"}
+    }
+  }]
+}

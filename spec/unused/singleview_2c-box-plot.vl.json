@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "config": {"background":"#ffffff"},   
+  "data": { "url": "data/cars.csv" },
+  "layer": [
+    {
+      "mark": "rule",
+      "encoding": {
+        "x": {
+          "field": "body-style", 
+          "type": "nominal"},
+        "y": {
+          "aggregate": "min",
+          "field": "curb-weight",
+          "type": "quantitative",
+          "axis": {"title": "Curb Weight"}
+        },
+        "y2": {
+          "aggregate": "max",
+          "field": "curb-weight",
+          "type": "quantitative"
+        }
+      }
+    },
+    {
+      "mark": "tick",
+      "encoding": {
+        "x": {
+          "field": "body-style", 
+          "type": "nominal"
+        },
+        "y": {
+          "aggregate": "min",
+          "field": "curb-weight",
+          "type": "quantitative"
+        },
+        "size": {"value": 5}
+      }
+    },
+    {
+      "mark": "tick",
+      "encoding": {
+        "x": {"field": "body-style", "type": "nominal"},
+        "y": {
+          "aggregate": "max",
+          "field": "curb-weight",
+          "type": "quantitative"
+        },
+        "size": {"value": 5}
+      }
+    },
+    {
+      "mark": "bar",
+      "encoding": {
+        "x": {"field": "body-style", "type": "nominal"},
+        "y": {
+          "aggregate": "q1",
+          "field": "curb-weight",
+          "type": "quantitative"
+        },
+        "y2": {
+          "aggregate": "q3",
+          "field": "curb-weight",
+          "type": "quantitative"
+        },
+        "size": {"value": 5}
+      }
+    },
+    {
+      "mark": "tick",
+      "encoding": {
+        "x": {"field": "body-style", "type": "nominal"},
+        "y": {
+          "aggregate": "median",
+          "field": "curb-weight",
+          "type": "quantitative"
+        },
+        "size": {"value": 5},
+        "color": { "value" : "white" }
+      }
+    }
+  ]
+}

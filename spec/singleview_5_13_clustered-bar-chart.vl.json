@@ -1,0 +1,40 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "config": {
+    "background": "#ffffff"
+  },
+  "data": {
+    "url": "data/cars.csv"
+  },
+  "facet": {
+    "row": {
+      "field": "body-style",
+      "type": "nominal",     
+      "header": {
+        "title": "Body Style",         
+        "labelAngle": 360
+
+      }
+    }
+  },
+  "spec":{
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "field": "fuel",
+      "type": "nominal",
+      "axis": {
+        "title": "Fuel"
+      }
+    },
+    "x": {
+      "aggregate": "average",
+      "field": "city-mpg",
+      "type": "quantitative",
+      "axis": {
+        "title": "City MPG"
+      }
+    }
+  }
+}
+}
