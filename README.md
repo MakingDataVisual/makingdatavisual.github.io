@@ -8,6 +8,4 @@ This page and project contain a live copy of the figures for the book ["Making D
 
 The figures are written in [Vega and Vega-Lite](http://vega.github.io), a JSON-based web-based language for creating sophisticated data visualizations.
 
-<div  style="clear:both;">
-<iframe src="examples.html" width="100%"></iframe>
-</div>
+Check out the interactive selector at the [Examples](examples.html) page
