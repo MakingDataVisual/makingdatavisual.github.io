@@ -1,0 +1,17 @@
+multiview_12_dual-axis.vl.json
+multiview_2_bars-states.vl.json
+multiview_3_bars-levels.vl.json
+multiview_5_bars-region.vl.json
+multiview_9_dashboard.vl.json
+singleview_13_pie.vg.json
+singleview_18_line-trellis.vl.json
+singleview_28_radar_variant1.vg.json
+singleview_28_radar_variant2.vg.json
+singleview_28_radar.vg.json
+singleview_29_parallel-coords.vg.json
+singleview_2a-multi-histogram.vl.json
+singleview_2b-bar.vl.json
+singleview_2c-box-plot.vl.json
+singleview_5_13a_clustered-bar-chart.vg.json
+singleview_5_hist-trellis.vl.json
+singleview_7_smoothed.vl.json

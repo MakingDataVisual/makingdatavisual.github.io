@@ -1,0 +1,193 @@
+{
+  "$schema": "https://vega.github.io/schema/vega/v3.0.json", 
+  "config":{"background":"#ffffff"},
+  "width": 300,
+  "height": 600,
+  "autosize": "pad",
+  "data": [
+    {
+      "name": "all",
+      "url": "data/melted.csv",
+      "format": {
+        "type": "csv",
+        "parse": {"id": "number","value": "number"}
+      }
+    },
+    {
+      "name": "population",
+      "source": "all",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum[\"variable\"] ==\"population\""
+        }
+      ]
+    },
+    {
+      "name": "hurricanes",
+      "source": "all",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum[\"variable\"] ==\"hurricanes\""
+        }
+      ]
+    },
+    {
+      "name": "engineers",
+      "source": "all",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "datum[\"variable\"] ==\"engineers\""
+        }
+      ]
+    },
+    {
+      "name": "states",
+      "url": "data/us-10m.json",
+      "format": {"type": "topojson","feature": "states"}
+    }
+  ],
+  "projections": [
+    {
+      "name": "projection",
+      "type": "albersUsa",
+      "scale": 400,
+      "translate": [150,90]
+    }
+  ],
+  "scales": [
+    {
+      "name": "population",
+      "type": "quantize",
+      "domain": {"data": "population","field": "value"},
+      "range": {"scheme": "greenblue-9"}
+    },
+    {
+      "name": "engineers",
+      "type": "quantize",
+      "domain": {"data": "engineers","field": "value"},
+      "range": {"scheme": "bluepurple-7"}
+    },
+    {
+      "name": "hurricanes",
+      "type": "quantize",
+      "domain": {"data": "hurricanes","field": "value"},
+      "range": {"scheme": "orangered-9"}
+    }
+  ],
+  "legends": [
+    {
+      "fill": "population",
+      "orient": "none",
+      "padding": 20,
+      "title": "Population per state",
+      "encode": {
+        "legend": {
+          "update": {"x": {"value": 320},"y": {"value": 0}}
+        },
+        "symbols": {
+          "update": {
+            "shape": {"value": "square"},
+            "stroke": {"value": "#ccc"},
+            "strokeWidth": {"value": 0.2}
+          }
+        }
+      }
+    },
+    {
+      "fill": "engineers",
+      "orient": "none",
+      "format": ".2%",
+      "padding": 20,
+      "title": "Percent engineers per state",
+      "encode": {
+        "legend": {
+          "update": {"x": {"value": 320},"y": {"value": 220}}
+        },
+        "symbols": {
+          "update": {
+            "shape": {"value": "square"},
+            "stroke": {"value": "#ccc"},
+            "strokeWidth": {"value": 0.2}
+          }
+        }
+      }
+    },
+    {
+      "fill": "hurricanes",
+      "orient": "none",
+      "padding": 20,
+      "title": "Hurricanes per state",
+      "encode": {
+        "legend": {
+          "update": {"x": {"value": 320},"y": {"value": 420}}
+        },
+        "symbols": {
+          "update": {
+            "shape": {"value": "square"},
+            "stroke": {"value": "#ccc"},
+            "strokeWidth": {"value": 0.2}
+          }
+        }
+      }
+    }
+  ],
+  "layout": {"padding": {"row": 20,"column": 20},"columns": 1},
+  "marks": [
+    {
+      "name": "cell",
+      "type": "group",
+      "from": {
+        "facet": {
+          "name": "facet",
+          "data": "all",
+          "groupby": ["variable"]
+        }
+      },
+      "data": [
+        {
+          "name": "joined",
+          "source": "states",
+          "transform": [
+            {
+              "type": "lookup",
+              "from": "facet",
+              "key": "id",
+              "fields": ["id"],
+              "as": ["all"]
+            },
+            {"type": "filter","expr": "datum.all != null"}
+          ]
+        }
+      ],
+      "marks": [
+        {
+          "type": "text",
+          "encode": {
+            "enter": {
+              "text": "",
+              "_text":  {"field": {"parent": "variable"}},              
+              "x": {"signal": "width/2"},
+              "align": {"value": "center"}
+            }
+          }
+        },
+        {
+          "type": "shape",
+          "from": {"data": "joined"},
+          "encode": {
+            "update": {
+              "fill": {
+                "scale": {"datum": "all.variable"},
+                "field": "all.value"
+              }
+            }
+          },
+          "transform": [{"type": "geoshape","projection": "projection"}]
+        }
+      ]
+    }
+  ]
+}

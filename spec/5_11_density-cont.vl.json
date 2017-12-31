@@ -1,0 +1,18 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
+  "config": {"background":"#ffffff"},
+  "data": { "url": "data/cars.csv" },
+  "mark": "rect",
+  "encoding": {
+    "y": {"field": "curb-weight", "bin": true, "type": "quantitative", "axis": {"title": "Curb Weight"}},
+    "x": {"field": "city-mpg", "bin": true, "type": "quantitative", "axis": {"title": "City MPG"}},
+    "color": {"aggregate": "count", "type": "quantitative"}
+  },
+  "config": {
+    "range": {
+      "heatmap": {
+        "scheme": "greenblue"
+      }
+    }
+  }
+}
