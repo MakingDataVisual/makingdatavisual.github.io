@@ -1,0 +1,22 @@
+img.figure {
+    width: 200px;
+    float:left;
+    background: white;
+    padding: 10px;
+    border:1px black;
+    margin-right: 20px;
+}
+
+h1 {
+    clear:both;
+    padding-top: 20px;
+}
+
+h2 {
+    clear:both;
+    padding-top: 20px;
+}
+
+.note {
+    font-style: italic;
+}

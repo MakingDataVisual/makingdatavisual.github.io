@@ -1,0 +1,254 @@
+[
+	{
+		"group": "Four Views of the Same Data",
+		"name": "fourviews",
+		"children": [
+			{
+				"caption": "A scatterplot emphasizes the relationship between cases that received relief and those that did not for five different products.",
+				"number": "5-1",
+				"spec": "5_1_scatter.vl.json",
+				"title": "Scatterplot"
+			},
+			{
+				"caption": "A clustered bar chart emphasizes the contrast between the number of people who requested relief and those who attained it.",
+				"note": "Due to a printing error, 5.2-5.4 have different orders of captions in the book. This section follows the order of the images shown in the book.",
+				"number": "5-2",
+				"spec": "5_3_clustered-bar-2.vl.json",
+				"title": "Clustered Barchart"
+			},
+			{
+				"caption": "A different clustering emphasizes the different sizes of the populations who didn’t receive relief (and the similarity of those who did).",
+				"number": "5-3",
+				"spec": "5_2_clustered-bar.vl.json",
+				"title": "Clustered Barchart"
+			},
+			{
+				"caption": "A stacked bar chart emphasizes the total number of complaints.",
+				"number": "5-4",
+				"spec": "5_4_stacked.vl.json",
+				"title": "Stacked Barchart"
+			}
+		]
+	},
+	{
+		"group": "Question: How Is a Value Distributed?",
+		"name": "distributed",
+		"children": [
+			{
+				"caption": "The distribution of car styles in the cars dataset.",
+				"number": "5-6",
+				"spec": "5_6_hist-cat.vl.json",
+				"title": "Categorical Histogram",
+				"variable": "C"
+			},
+			{
+				"caption": "A kernel density estimate of the city-mpg field of the cars dataset. Smoothed with a narrow bandwidth, the dataset shows sharp peaks. Smoothed with a wider bandwidth, the dataset shows a gaussian-like distribution.",
+				"number": "5-7",
+				"spec": "5_7_hist-quant.vl.json",
+				"title": "Quantitative Histogram",
+				"variable": "Q"
+			},
+			{
+				"caption": "The distribution of car ratings for the city-mpg field.",
+				"number": "5-8",
+				"spec": "5_8_fixed_smoothed.vg.json",
+				"title": "Smoothed Histogram",
+				"variable": "Q"
+			},
+			{
+				"caption": "The distribution of car ratings for the city-mpg field.",
+				"number": "5-9",
+				"spec": "5_9_box-plot.vl.json",
+				"title": "Box Plot",
+				"variable": "Q"
+			},
+			{
+				"caption": "The number of cars, grouping body style by make.",
+				"number": "5-10",
+				"spec": "5_10_density-cat.vl.json",
+				"title": "Categorical Density Plot",
+				"variable": "CxC"
+			},
+			{
+				"caption": "The joint distribution of efficiency, as measured in MPG, against the weight of the car.",
+				"number": "5-11",
+				"spec": "5_11_density-cont.vl.json",
+				"title": "Continuous Density Plot",
+				"variable": "QxQ"
+			}
+		]
+	},
+	{
+		"group": "Question: How Do Groups Differ from Each Other?",	
+		"name": "differ",
+		"children": [
+			{
+				"number": "5-12",
+				"spec": "5_12_bar-chart.vl.json",
+				"title": "Bar Chart",
+				"caption": "Bar length shows the average efficiency by body style using the same data as in Figure 5-9.",
+				"variable": "CxQ"
+			},
+			{
+				"spec": "5_13a_clustered-bar-chart.vg.json",
+				"number": "5-13",
+				"title": "Paired (or Multiple) Series Bar Chart",
+				"caption": "Efficiency by body style is now divided into diesel versus gas cars.",
+				"variable": "2CxQ"
+			},
+			{
+				"spec": "5_14_justone_pie.vg.json",
+				"number": "5-14",
+				"title": "Pie (or Doughnut) Chart",
+				"caption": " The CFPB data shows the ways that complaints have been closed.",
+				"variable": "CxQ"
+			},
+			{
+				"spec": "5_15_heatmap.vl.json",
+				"number": 5.15,
+				"title": "Heatmap",
+				"caption": "The CFPB data shows the ways that complaints have been closed, broken out by month and year.",
+				"variable": "CxQxQ"
+			}
+		]
+	},
+	{
+		"group": "Question: Do Invidual Items Fall Into Groups? Is There a Relationship Between Attributes of Items?",	
+		"name": "groups",
+		"children": [
+			{
+				"spec": "5_16_scatterplot.vl.json",
+				"number": "5-16",
+				"title": "Scatterplot",
+				"caption": "The relation between curb weight and MPG for five different styles of car.",
+				"variable": "QxQ",
+				"note": "Additional continuous, ordinal, or categorical variables can be added for size, color, and shape."
+			},
+			{
+				"spec": "5_17_line.vl.json",
+				"number": "5-17",
+				"title": "Line Chart",
+				"caption": "Count of consumer complaints by year and month for the CFPB data.",
+				"variable": "OxQ"
+			},
+			{
+				"spec": "5_18_area-stacked.vl.json",
+				"number": "5-18",
+				"title": "Stacked Area Chart",
+				"caption": "Count of consumer complaints, like Figure 5-17, broken out by product. Mortgages stabilized while credit reporting grew. This shows the same data as Figure 5-15.",
+				"variable": "OxQxC"
+			}
+		]
+	},
+	{
+		"group": "Question: How Are Objects Related To Each Other in a Network or Hierarchy?",	
+		"name": "related",
+		"children": [
+			{
+				"spec": "5_19_force.vg.json",
+				"number": "5-19",
+				"title": "Node-Link View (Force-Directed Layout)",
+				"caption": "This data from the Les Miserables dataset shows coappearance in the novel between characters. The network has been truncated to 40 nodes for legibility. Colors are mapped to groups of characters",
+				"variable": "relational",
+				"note": "Additional attributes can be used to color or style nodes and links."
+			},
+			{
+				"spec": "5_20_circular.vg.json",
+				"number": "5-20",
+				"title": "Circular Network Layout",
+				"caption": "This data from the Les Miserables dataset shows coappearance in the novel between characters. The network has been truncated to 40 nodes for legibility. Colors are mapped to groups of characters",
+				"variable": "relational"
+			},
+			{
+				"spec": "5_21_adjancency.vg.json",
+				"number": "5-21",
+				"title": "Adjacency Matrix",
+				"caption": "Shows the same data as Figures 5-19 and 5-20",
+				"variable": "relational",
+				"note": "Additional attributes can be used to color the cells."
+			},
+			{
+				"spec": "5_22_treeview.vg.json",
+				"number": "5-22",
+				"title": "Tree View",
+				"caption": "This is a hierarchy of the types of complaints to the CFPB and the percentage of them that received relief. The second layer of the tree corresponds to the values in Figures 5-1 through 5-4.",
+				"variable": "hierarchial",
+				"note": "Additional attributes can be used to color the edges and nodes."
+			},
+			{
+				"spec": "5_23_treemap.vg.json",
+				"number": "5-23",
+				"title": "Treemap",
+				"caption": "Represents the same data as Figure 5-22 but adds a second dimension for size: the number of complaints.",
+				"variable": "hierarchial, QxQ"
+			},
+			{
+				"spec": "5_24_sunburst.vg.json",
+				"number": "5-24",
+				"title": "Sunburst plot",
+				"caption": "Represents the same data as Figure 5-23.",
+				"variable": "hierarchial, QxQ"
+			}
+		]
+	},
+	{
+		"group": "Question: Where Are Objects Located?",	
+		"name": "map",
+		"children": [
+			{
+				"spec": "5_25_map.vg.json",
+				"number": "5-25",
+				"title": "Choropleth",
+				"caption": "Values correspond to regions, such as states or counties. This chart uses census data to look at the percentage of the population with income over $200,000."
+			},
+			{
+				"spec": "5_26_zip.vg.json",
+				"number": "5-26",
+				"title": "Dotplot map",
+				"caption": "A scatterplot, where the x- and y-axes are geographical (or a list of geographical points); additional dimensions for size, color, or shape. Dots are located at the centroid of each zip code; the first digit encodes color."
+			}
+		]
+	},
+	{
+		"group": "Question: What Is In This Text?",	
+		"name": "text",
+		"children": [
+			{
+				"spec": "5_27_wordcloud.vg.json",
+				"number": "5-27",
+				"title": "Word Cloud",
+				"caption": "The text of the Preface to this book, sized by number of uses of the word. Color in this chart is arbitrary."
+			}
+		]
+	},
+	{
+		"group": "Chapter 6: Multiviews",
+		"name": "multiview",
+		"children": [
+			{
+				"spec": "6_1_small-multiples-states.vg.json",
+				"number": "6-1",
+				"title": "Small Multiples, Split by Dimension",
+				"caption": "Small multiples of choropleths. In each choropleth, the percentages of the states’ populations for a specific salary range are shown—the small multiple views are partitioned over the set of salary ranges."
+			},
+			{
+				"spec": "6_9_multimap.vg.json",
+				"number": "6-9",
+				"title": "Small Multiples, Showing Different Measures",
+				"caption": "Even with different measures, these three choropleths illustrate the value of aligning scales and maintaining coordinate systems. The maps show the population of each state, the percentage of the population that are engineers, and the number of hurricanes. (The very different map color schemes suggest that engineers do not cause hurricanes.)"
+			},
+			{
+				"spec": "6_2_splom.vl.json",
+				"number": "6-2",
+				"title": "SPLOM",
+				"caption": "A SPLOM comparing attributes of cars in the scatterplots, with a color encoding indicating whether the cars are all-, rear-, or front-wheel drive. This chart helps show, for example, that rear- and front-wheel-drive cars can be separated by their curb weight in conjunction with city-mpg or highway-mpg more than by their width and length."
+			},
+			{
+				"spec": "6_10_crossfilter.vl.json",
+				"number": "6-10",
+				"title": "Cross-Selection",
+				"caption": "The three views—two sorted bar charts and a scatterplot—are linked together. The user has selected a region of the scatterplot (grey box, orange dots), and the selected values correspondingly light up on the bar charts. This is based on the World Bank dataset."
+			}
+		]
+	}
+]
