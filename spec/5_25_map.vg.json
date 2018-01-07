@@ -5,7 +5,7 @@
   "data": [
     {
       "name": "income",
-      "url": "data/income.csv",
+      "url": "/data/income.csv",
       "format": {
         "type": "csv",
         "parse": {"id": "number","value": "number"}
@@ -20,7 +20,7 @@
     },
     {
       "name": "states",
-      "url": "data/us-10m.json",
+      "url": "/data/us-10m.json",
       "format": {"type": "topojson","feature": "states"},
       "transform": [
         {

@@ -8,7 +8,7 @@
     }
   },     
   "width": 600,
-  "data": {"url": "data/complaints.csv", "format": {"type": "csv"}},
+  "data": {"url": "/data/complaints.csv", "format": {"type": "csv"}},
   "mark": "rect",
   "encoding": {
     "y": {"field": "Product", "type": "nominal"},

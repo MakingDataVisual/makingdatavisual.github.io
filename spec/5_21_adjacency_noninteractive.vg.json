@@ -15,7 +15,7 @@
   "data": [
     {
       "name": "nodes",
-      "url": "data/miserables.json",
+      "url": "/data/miserables.json",
       "format": {"type": "json", "property": "nodes"},
       "transform": [
         { "type": "filter",
@@ -26,7 +26,7 @@
     },
     {
       "name": "edges",
-      "url": "data/miserables.json",
+      "url": "/data/miserables.json",
       "format": {"type": "json", "property": "links"},
       "transform": [
         { "type": "filter",

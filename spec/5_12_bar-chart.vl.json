@@ -4,7 +4,7 @@
     "background": "#ffffff"
   },
   "data": {
-    "url": "data/cars.csv"
+    "url": "/data/cars.csv"
   },
   "mark": "bar",
   "encoding": {

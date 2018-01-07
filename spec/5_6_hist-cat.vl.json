@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
   "config": {"background":"#ffffff"},   
   "data": {
-       "url": "data/cars.csv", 
+       "url": "/data/cars.csv", 
        "format": {"type":"csv"} 
       },
   "mark": "bar",

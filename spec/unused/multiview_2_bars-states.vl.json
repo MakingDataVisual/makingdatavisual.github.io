@@ -2,7 +2,7 @@
   "$schema": "https://vega.github.io/schema/vega-lite/v2.json", 
   "config":{"background":"#ffffff"},
   "data": {
-    "url": "data/census-income-pivoted.csv",
+    "url": "/data/census-income-pivoted.csv",
     "format": {"type": "csv", "parse": {"order": "number"}}
   },
   "transform": [

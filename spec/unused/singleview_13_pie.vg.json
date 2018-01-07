@@ -6,7 +6,7 @@
   "data": [
     {
       "name": "table",
-      "url": "data/complaints.csv",
+      "url": "/data/complaints.csv",
       "format": {"type": "csv","parse": "auto"},
       "transform": [
         {

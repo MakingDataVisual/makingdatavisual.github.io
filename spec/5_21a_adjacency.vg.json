@@ -33,7 +33,7 @@
   "data": [
     {
       "name": "nodes",
-      "url": "data/miserables.json",
+      "url": "/data/miserables.json",
       "format": {"type": "json", "property": "nodes"},
       "transform": [
         { "type": "collect", "sort": {"field": "group"} },
@@ -50,7 +50,7 @@
     },
     {
       "name": "edges",
-      "url": "data/miserables.json",
+      "url": "/data/miserables.json",
       "format": {"type": "json", "property": "links"},
       "transform": [
         {

@@ -3,7 +3,7 @@
   "config": {"background":"#ffffff"},     
   "width": 600,
   "height": 100,
-  "data": {"url": "data/complaints.csv", "format": {"type": "csv"}},
+  "data": {"url": "/data/complaints.csv", "format": {"type": "csv"}},
   "mark": "line",
   "encoding": {
     "x": {

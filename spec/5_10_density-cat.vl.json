@@ -1,6 +1,6 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
-  "data": { "url": "data/cars.csv" },
+  "data": { "url": "/data/cars.csv" },
   "mark": "rect",
   "encoding": {
     "x": {"field": "make", "type": "nominal", "axis": {"title": "Make"}},

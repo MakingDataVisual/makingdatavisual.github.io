@@ -59,12 +59,12 @@
   "data": [
     {
       "name": "node-data",
-      "url": "data/miserables.small.json",
+      "url": "/data/miserables.small.json",
       "format": {"type": "json", "property": "nodes"}
     },
     {
       "name": "link-data",
-      "url": "data/miserables.small.json",
+      "url": "/data/miserables.small.json",
       "format": {"type": "json", "property": "links"},
       "transform": [
       ]

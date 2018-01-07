@@ -15,13 +15,13 @@
   "data": [
     {
       "name": "states",
-      "url": "data/us-10m.json",
+      "url": "/data/us-10m.json",
       "format": {"type": "topojson","feature": "states"},
       "transform": [{"type": "geopath","projection": "projection"}]
     },
     {
       "name": "zipcodes",
-      "url": "data/zip_codes_states.csv",
+      "url": "/data/zip_codes_states.csv",
       "format": {
         "type": "csv",
         "parse": {

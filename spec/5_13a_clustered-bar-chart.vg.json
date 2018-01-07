@@ -6,7 +6,7 @@
   "data": [
     {
       "name": "source_0",
-      "url": "data/cars.csv",
+      "url": "/data/cars.csv",
       "format": {
         "type": "csv",
         "parse": {

@@ -7,7 +7,7 @@
   "data": [
     {
       "name": "all",
-      "url": "data/melted.csv",
+      "url": "/data/melted.csv",
       "format": {
         "type": "csv",
         "parse": {"id": "number","value": "number"}
@@ -45,7 +45,7 @@
     },
     {
       "name": "states",
-      "url": "data/us-10m.json",
+      "url": "/data/us-10m.json",
       "format": {"type": "topojson","feature": "states"}
     }
   ],

@@ -1,7 +1,7 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v2.json",
   "config": {"background":"#ffffff"},
-  "data": { "url": "data/cars.csv" },
+  "data": { "url": "/data/cars.csv" },
   "mark": "rect",
   "encoding": {
     "y": {"field": "curb-weight", "bin": true, "type": "quantitative", "axis": {"title": "Curb Weight"}},

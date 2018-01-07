@@ -53,11 +53,21 @@
                     
                     <a name="{{figure.spec}}"></a> 
                     
-                    {% assign imgurl = figure.spec | remove:".vl.json" | remove:".vg.json" | append: ".png" | prepend: "img/" %}
+                    {% assign name = figure.spec | remove:".vl.json" | remove:".vg.json" %}     {% assign imgurl = name | append: ".png" | prepend: "img/" %}
 
-                    <img class="figure" src="{{imgurl}}" />
-                    <p class="caption">{{ figure.caption }}</p>
-
+                    <a href="/examples/{{name}}">
+                            <img class="figure" src="{{imgurl}}" />
+                    </a>
+                            <p class="caption">{{ figure.caption }}</p>        
+                            <a href="/examples/{{name}}">
+                                {% if figure.spec contains ".vl."%}
+                                (Vega-Lite demo)
+                                {% else %}
+                                (Vega demo)
+                                {% endif %}
+                            </a>
+                            
+ 
                     {% if figure.note %}
                         <p class="note">Note: {{figure.note}}</p>
                     {% endif %} 

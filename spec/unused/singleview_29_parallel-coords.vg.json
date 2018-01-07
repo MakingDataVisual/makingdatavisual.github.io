@@ -16,7 +16,7 @@
   "data": [
     {
       "name": "cars",
-      "url": "data/cars.csv",
+      "url": "/data/cars.csv",
       "format": {
         "type": "csv",
         "parse": {
