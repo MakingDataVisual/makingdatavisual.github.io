@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: Shows the same data as Figures 5-19 and 5-20
 title: Adjacency Matrix
 permalink: /examples/5_21_adjancency.html

@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: A different clustering emphasizes the different sizes of the populations who didn’t receive relief (and the similarity of those who did).
 title: Clustered Barchart
 permalink: /examples/5_2_clustered-bar.html

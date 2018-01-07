@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: The distribution of car ratings for the city-mpg field.
 title: Smoothed Histogram
 permalink: /examples/5_8_fixed_smoothed.html

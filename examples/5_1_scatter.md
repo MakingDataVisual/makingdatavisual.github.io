@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: A scatterplot emphasizes the relationship between cases that received relief and those that did not for five different products.
 title: Scatterplot
 permalink: /examples/5_1_scatter.html

@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: Efficiency by body style is now divided into diesel versus gas cars.
 title: Paired (or Multiple) Series Bar Chart
 permalink: /examples/5_13a_clustered-bar-chart.html

@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: The relation between curb weight and MPG for five different styles of car.
 title: Scatterplot
 permalink: /examples/5_16_scatterplot.html

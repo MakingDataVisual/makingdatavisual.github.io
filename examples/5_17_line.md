@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: Count of consumer complaints by year and month for the CFPB data.
 title: Line Chart
 permalink: /examples/5_17_line.html

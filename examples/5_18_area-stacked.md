@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: Count of consumer complaints, like Figure 5-17, broken out by product. Mortgages stabilized while credit reporting grew. This shows the same data as Figure 5-15.
 title: Stacked Area Chart
 permalink: /examples/5_18_area-stacked.html

@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: Bar length shows the average efficiency by body style using the same data as in Figure 5-9.
 title: Bar Chart
 permalink: /examples/5_12_bar-chart.html

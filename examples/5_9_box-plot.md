@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: The distribution of car ratings for the city-mpg field.
 title: Box Plot
 permalink: /examples/5_9_box-plot.html

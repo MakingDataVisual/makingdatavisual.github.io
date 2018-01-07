@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: A stacked bar chart emphasizes the total number of complaints.
 title: Stacked Barchart
 permalink: /examples/5_4_stacked.html

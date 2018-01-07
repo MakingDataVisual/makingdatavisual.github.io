@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: The joint distribution of efficiency, as measured in MPG, against the weight of the car.
 title: Continuous Density Plot
 permalink: /examples/5_11_density-cont.html

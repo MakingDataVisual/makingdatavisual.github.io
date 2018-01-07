@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: A clustered bar chart emphasizes the contrast between the number of people who requested relief and those who attained it.
 title: Clustered Barchart
 permalink: /examples/5_3_clustered-bar-2.html

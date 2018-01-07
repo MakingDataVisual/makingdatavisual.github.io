@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: The CFPB data shows the ways that complaints have been closed, broken out by month and year.
 title: Heatmap
 permalink: /examples/5_15_heatmap.html

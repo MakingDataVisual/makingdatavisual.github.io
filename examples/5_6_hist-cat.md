@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: The distribution of car styles in the cars dataset.
 title: Categorical Histogram
 permalink: /examples/5_6_hist-cat.html

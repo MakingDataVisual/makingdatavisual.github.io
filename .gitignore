@@ -1,3 +1,4 @@
 _site/
 test.md
 spec/unused.txt
+node_modules/

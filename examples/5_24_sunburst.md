@@ -1,6 +1,5 @@
 ---
-layout: page
-menu: examples
+layout: examplepage
 description: Represents the same data as Figure 5-23.
 title: Sunburst plot
 permalink: /examples/5_24_sunburst.html

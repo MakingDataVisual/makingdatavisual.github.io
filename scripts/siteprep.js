@@ -12,8 +12,7 @@ const examples = require('../_data/figures.json');
 
 function createPage(example) {
   return (`---
-layout: page
-menu: examples
+layout: examplepage
 ${example.caption ? `description: ${example.caption}`: ''}
 title: ${example.title}
 permalink: /examples/${example.name}.html
