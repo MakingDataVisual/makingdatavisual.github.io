@@ -20,3 +20,7 @@ h2 {
 .note {
     font-style: italic;
 }
+
+vega-actions a {
+    margin: 0.3em;
+}
