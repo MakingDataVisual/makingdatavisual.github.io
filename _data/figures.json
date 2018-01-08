@@ -160,7 +160,7 @@
 				"variable": "relational"
 			},
 			{
-				"spec": "5_21_adjancency.vg.json",
+				"spec": "5_21_adjacency.vg.json",
 				"number": "5-21",
 				"title": "Adjacency Matrix",
 				"caption": "Shows the same data as Figures 5-19 and 5-20",

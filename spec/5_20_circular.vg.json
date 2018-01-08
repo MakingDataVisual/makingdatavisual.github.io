@@ -30,7 +30,7 @@
       ]
     },
     { "description": "throttles the number of nodes rendered; 77 covers 'all'",
-      "name": "numNodes", "value": 30 }
+      "name": "numNodes", "value": 77 }
   ],
 
   "data": [
