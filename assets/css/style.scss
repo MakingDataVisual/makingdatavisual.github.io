@@ -1,3 +1,8 @@
+---
+---
+
+@import "{{ site.theme }}";
+
 img.figure {
     width: 200px;
     float:left;
@@ -22,5 +27,18 @@ h2 {
 }
 
 .vega-actions a {
-    margin: 0.3em;
+    margin-right: 0.6em;
+}
+
+.clear {
+    clear: both;
+}
+
+.vega-bind > * {
+    margin-right: .6em;
+}
+
+.vega-bind label {
+    margin-right: .6em;
+    margin-left: .2em;
 }
