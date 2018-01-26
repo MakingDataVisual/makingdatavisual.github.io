@@ -10,3 +10,5 @@ The figures are written in [Vega and Vega-Lite](http://vega.github.io), a JSON-b
 
 {:.clear}
 An illustrated list of all figures, with interactive code, is at the [Figure List](figurelist.html).
+
+This page is hosted on [on GitHub](https://github.com/MakingDataVisual/makingdatavisual.github.io).
