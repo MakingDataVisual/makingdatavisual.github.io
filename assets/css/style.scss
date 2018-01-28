@@ -3,8 +3,24 @@
 
 @import "{{ site.theme }}";
 
+.page-header.small {
+    padding: 2rem 6rem;
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+.page-header a {
+    color: white;
+    text-decoration: none;
+}
+
+.group {
+    margin: 0.6em 0;
+}
+
 img.figure {
-    width: 200px;
+    width: 220px;
     float:left;
     background: white;
     padding: 10px;
@@ -12,14 +28,8 @@ img.figure {
     margin-right: 20px;
 }
 
-h1 {
-    clear:both;
-    padding-top: 20px;
-}
-
-h2 {
-    clear:both;
-    padding-top: 20px;
+#view {
+    margin: 2em 0;
 }
 
 .note {

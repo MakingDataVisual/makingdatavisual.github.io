@@ -1,6 +1,6 @@
 ---
-layout: default
-title: Executable Examples for Making Data Visual
+layout: page
+title: List of Figures
 ---
 
 <a href="./">◀ Back to Homepage</a>
@@ -8,14 +8,10 @@ title: Executable Examples for Making Data Visual
 <h2>List of Figures</h2>
 
 {% for group in site.data.figures %} 
-    <a href="#{{group.name}}"><div class="group"> {{ group.group }}:</a>
-    {{ group.children | map: "title" | join: ", "  }}
-<!--                    {% for figure in group.children %} 
-        {% if figure.number %} 
-            <span>{{ figure.title }} </span>
-        {% endif %} 
-    {% endfor %} 
-!-->
+    <div class="group">
+        <a href="#{{group.name}}">{{ group.group }}:</a>
+        {{ group.children | map: "title" | join: ", "  }}
+    </div>
 {% endfor %}
 
 {% for group in site.data.figures %}
