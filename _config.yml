@@ -2,3 +2,6 @@ title: Making Data Visual
 description: Executable Examples for the Book "Making Data Visual" by Danyel Fisher & Miriah Meyer
 show_downloads: false
 theme: jekyll-theme-cayman
+
+github:
+  is_project_page: true
