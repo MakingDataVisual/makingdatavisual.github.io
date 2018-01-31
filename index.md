@@ -13,3 +13,5 @@ The figures are written in [Vega and Vega-Lite](https://vega.github.io), a JSON-
 
 {:.clear}
 An illustrated list of all figures, with interactive code, is at the [Figure List](figurelist.html).
+
+_Thanks to [Dominik Moritz](https://github.com/domoritz) for help getting the interactive website polished._
