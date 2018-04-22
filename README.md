@@ -4,4 +4,4 @@ This [page](https://makingdatavisual.github.io) and project contain a live copy 
 
 The figures are written in [Vega and Vega-Lite](https://vega.github.io), a JSON-based web-based language for creating sophisticated data visualizations.
 
-An illustrated list of all figures, with interactive code, is at the [Figure List](figurelist.html).
+Start at the [Figure List](figurelist.html) with an illustrated list of all figures; click through to get to interactive code.
